@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pupomupo Birthday Countdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2e8b57;
+        }
+
+        #countdown {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ff4500;
+        }
+
+        .countdown-text {
+            font-size: 24px;
+            color: #555;
+        }
+
+        .countdown-box {
+            display: inline-block;
+            margin: 10px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .countdown-box span {
+            display: block;
+            font-size: 36px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pupomupo Birthday Countdown</h1>
+    <p class="countdown-text">Time remaining until Pupomupo's birthday!</p>
+
+    <div id="countdown">
+        <div class="countdown-box" id="days">
+            <span id="days-num">0</span>
+            <p>Days</p>
+        </div>
+        <div class="countdown-box" id="hours">
+            <span id="hours-num">0</span>
+            <p>Hours</p>
+        </div>
+        <div class="countdown-box" id="minutes">
+            <span id="minutes-num">0</span>
+            <p>Minutes</p>
+        </div>
+        <div class="countdown-box" id="seconds">
+            <span id="seconds-num">0</span>
+            <p>Seconds</p>
+        </div>
+    </div>
+
+    <script>
+        // Set the target date for the countdown (Pupomupo's birthday: February 11)
+        var targetDate = new Date("February 11, 2025 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        var x = setInterval(function() {
+
+            // Get current date and time
+            var now = new Date().getTime();
+
+            // Calculate the time difference between now and the target date
+            var distance = targetDate - now;
+
+            // Time calculations for days, hours, minutes, and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the results in the HTML
+            document.getElementById("days-num").innerHTML = days;
+            document.getElementById("hours-num").innerHTML = hours;
+            document.getElementById("minutes-num").innerHTML = minutes;
+            document.getElementById("seconds-num").innerHTML = seconds;
+
+            // If the countdown is finished, display a message
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "Happy Birthday Pupomupo!";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
